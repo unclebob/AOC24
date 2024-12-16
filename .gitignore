@@ -1,0 +1,7 @@
+**/*.xml
+**/*.iml
+**/*.edn
+**/.idea/**
+**/.idea
+**/.cpcache
+**/.cpcache/**
