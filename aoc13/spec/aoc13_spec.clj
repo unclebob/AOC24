@@ -48,7 +48,9 @@
     (it "solves input"
       (should= 0 (solve "input.txt" 10000000000000))))
 
-
-
   )
+
+(describe "coverage diag"
+  (it "checks direct linking"
+    (should= false (get (System/getProperties) "clojure.compiler.direct-linking"))))
 

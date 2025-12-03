@@ -1,0 +1,149 @@
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="coverage.css"/>  <title> aoc13.clj </title>
+ </head>
+ <body>
+<span class="covered" title="1 out of 1 forms covered">
+                001&nbsp;&nbsp;(ns&nbsp;aoc13
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                002&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[clojure.string&nbsp;:as&nbsp;string]))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                003&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                004&nbsp;&nbsp;(defn&nbsp;parse-button&nbsp;[line]
+                </span><br/>
+<span class="not-covered" title="0 out of 5 forms covered">
+                005&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[[_&nbsp;button&nbsp;x&nbsp;y]&nbsp;(re-matches&nbsp;#&quot;Button&nbsp;(\w):&nbsp;X([+-]\d+),&nbsp;Y([+-]\d+)&quot;&nbsp;line)]
+                </span><br/>
+<span class="not-covered" title="0 out of 9 forms covered">
+                006&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{button&nbsp;[(Integer&#x2F;parseInt&nbsp;x)&nbsp;(Integer&#x2F;parseInt&nbsp;y)]}))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                007&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                008&nbsp;&nbsp;(defn&nbsp;parse-prize&nbsp;[line]
+                </span><br/>
+<span class="not-covered" title="0 out of 5 forms covered">
+                009&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[[_&nbsp;x&nbsp;y]&nbsp;(re-matches&nbsp;#&quot;Prize.*X=([+-]?\d+).*Y=([+-]?\d+)&quot;&nbsp;line)]
+                </span><br/>
+<span class="not-covered" title="0 out of 9 forms covered">
+                010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&quot;X&quot;&nbsp;(Integer&#x2F;parseInt&nbsp;x)&nbsp;&quot;Y&quot;&nbsp;(Integer&#x2F;parseInt&nbsp;y)}))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                011&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                012&nbsp;&nbsp;(defn&nbsp;parse-machine&nbsp;[lines]
+                </span><br/>
+<span class="not-covered" title="0 out of 3 forms covered">
+                013&nbsp;&nbsp;&nbsp;&nbsp;(prn&nbsp;&#x27;parse-machine)
+                </span><br/>
+<span class="not-covered" title="0 out of 8 forms covered">
+                014&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[buttons&nbsp;(map&nbsp;parse-button&nbsp;(take&nbsp;2&nbsp;lines))
+                </span><br/>
+<span class="not-covered" title="0 out of 5 forms covered">
+                015&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prize&nbsp;(parse-prize&nbsp;(last&nbsp;lines))
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                016&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttons&nbsp;(apply&nbsp;merge&nbsp;buttons)
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;machine&nbsp;(merge&nbsp;buttons&nbsp;prize)]
+                </span><br/>
+<span class="not-covered" title="0 out of 17 forms covered">
+                018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{:xa&nbsp;(first&nbsp;(machine&nbsp;&quot;A&quot;))&nbsp;:ya&nbsp;(second&nbsp;(machine&nbsp;&quot;A&quot;))
+                </span><br/>
+<span class="not-covered" title="0 out of 10 forms covered">
+                019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:xb&nbsp;(first&nbsp;(machine&nbsp;&quot;B&quot;))&nbsp;:yb&nbsp;(second&nbsp;(machine&nbsp;&quot;B&quot;))
+                </span><br/>
+<span class="not-covered" title="0 out of 6 forms covered">
+                020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:x&nbsp;(machine&nbsp;&quot;X&quot;)&nbsp;:y&nbsp;(machine&nbsp;&quot;Y&quot;)}))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                021&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                022&nbsp;&nbsp;(defn&nbsp;solve-machine
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                023&nbsp;&nbsp;&nbsp;&nbsp;([machine]
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(solve-machine&nbsp;machine&nbsp;0))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                025&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                026&nbsp;&nbsp;&nbsp;&nbsp;([{:keys&nbsp;[xa&nbsp;ya&nbsp;xb&nbsp;yb&nbsp;x&nbsp;y]}&nbsp;offset]
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[x&nbsp;(+&nbsp;x&nbsp;offset)
+                </span><br/>
+<span class="not-covered" title="0 out of 3 forms covered">
+                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;(+&nbsp;y&nbsp;offset)
+                </span><br/>
+<span class="not-covered" title="0 out of 15 forms covered">
+                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;(&#x2F;&nbsp;(-&nbsp;(*&nbsp;xb&nbsp;y)&nbsp;(*&nbsp;yb&nbsp;x))&nbsp;(-&nbsp;(*&nbsp;xb&nbsp;ya)&nbsp;(*&nbsp;xa&nbsp;yb)))
+                </span><br/>
+<span class="not-covered" title="0 out of 7 forms covered">
+                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;(&#x2F;&nbsp;(-&nbsp;x&nbsp;(*&nbsp;xa&nbsp;a))&nbsp;xb)]
+                </span><br/>
+<span class="not-covered" title="0 out of 17 forms covered">
+                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(and&nbsp;(int?&nbsp;a)&nbsp;(int?&nbsp;b))&nbsp;(+&nbsp;(*&nbsp;3&nbsp;a)&nbsp;b)&nbsp;0)
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                032&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                033&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                034&nbsp;&nbsp;(defn&nbsp;solve
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                035&nbsp;&nbsp;&nbsp;&nbsp;([filename]
+                </span><br/>
+<span class="not-covered" title="0 out of 4 forms covered">
+                036&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(solve&nbsp;filename&nbsp;0))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                037&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                038&nbsp;&nbsp;&nbsp;&nbsp;([filename&nbsp;offset]
+                </span><br/>
+<span class="not-covered" title="0 out of 13 forms covered">
+                039&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(loop&nbsp;[lines&nbsp;(-&gt;&nbsp;filename&nbsp;slurp&nbsp;(string&#x2F;split-lines))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                040&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;0]
+                </span><br/>
+<span class="not-covered" title="0 out of 8 forms covered">
+                041&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(empty?&nbsp;lines)
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                042&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum
+                </span><br/>
+<span class="not-covered" title="0 out of 12 forms covered">
+                043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[tokens&nbsp;(-&gt;&nbsp;(take&nbsp;3&nbsp;lines)
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                044&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parse-machine
+                </span><br/>
+<span class="not-covered" title="0 out of 6 forms covered">
+                045&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(solve-machine&nbsp;offset))]
+                </span><br/>
+<span class="not-covered" title="0 out of 2 forms covered">
+                046&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recur&nbsp;(drop&nbsp;4&nbsp;lines)&nbsp;(+&nbsp;sum&nbsp;tokens))))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                047&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)))
+                </span><br/>
+ </body>
+</html>

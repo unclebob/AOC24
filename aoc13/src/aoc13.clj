@@ -10,6 +10,7 @@
     {"X" (Integer/parseInt x) "Y" (Integer/parseInt y)}))
 
 (defn parse-machine [lines]
+  (prn 'parse-machine)
   (let [buttons (map parse-button (take 2 lines))
         prize (parse-prize (last lines))
         buttons (apply merge buttons)
